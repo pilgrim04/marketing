@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+<head>
+    <title>Личный кабинет</title>
+</head>
+<body>
+{% block content %}
+
+    <!--Привет, {{ user.username }}!-->
+    <form method="post">{% csrf_token %}
+        <!--<div><input id="id_file_title" name="file_title" type="text"-->
+                    <!--onFocus="checkFocus(this, 'file_title')" onBlur="checkBlur(this, 'file_title')" /></div>-->
+
+        <div><input id="id_upload_file" name="upload_file" type="file"
+                    onFocus="checkFocus(this, 'upload_file')" onBlur="checkBlur(this, 'upload_file')"/></div>
+
+        <div><input class="btn btn-primary btn-small" type="submit" value="upload it"/></div>
+    </form>
+
+{% endblock content %}
+</body>
+</html>

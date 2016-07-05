@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+<head>
+    <title>Регистрация нового пользователя</title>
+</head>
+<body>
+{% block content %}
+Welcome!
+
+<form method="post">{% csrf_token %}
+    login: <input name="login" type="text"><br/>
+    email: <input name="email" type="email"><br/>
+    pass: <input name="password" type="password"><br/>
+    confirm: <input name="password_confirm" type="password"><br/>
+    name: <input name="first_name" type="text"><br/>
+    last name: <input name="last_name" type="text"><br/>
+
+    <input type="submit" value="Зарегистрироваться">
+
+</form>
+{% endblock content %}
+</body>
+</html>

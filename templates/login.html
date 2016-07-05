@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+    <head>
+        <title>Welcome to Marketing!</title>
+    </head>
+
+    <body>
+{% block content %}
+        Welcome!
+
+        <form method="post">{% csrf_token %}
+            <div><input id="id_username" name="login" type="text" onFocus="checkFocus(this, 'логин')" onBlur="checkBlur(this, 'логин')" /></div>
+            <div><input id="id_password" name="password" type="password" onFocus="checkFocus(this, 'пароль')" onBlur="checkBlur(this, 'пароль')"/></div>
+            <div><input class="btn btn-primary btn-small" type="submit" value="войти"/>
+        </form>
+
+        <a class="btn btn-primary btn-small"href="/registration">Создать новый аккаунт</a>
+{% endblock content %}
+    </body>
+</html>
