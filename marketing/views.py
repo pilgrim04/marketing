@@ -87,3 +87,26 @@ class CabinetView(TemplateView):
 
         return context
 
+    def upload_file(request):
+        if request.method == 'POST':
+            form = UploadFileForm(request.POST, request.FILES)
+            if form.is_valid():
+                # my_file = request.FILES['file']
+                for filename, file in request.FILES.iteritems():
+                    name = request.FILES[filename].name
+                    print name
+                '''
+                TODO:
+                1. upload file
+                2. save it
+                2. open it
+                3. change it
+                4. save new file
+                5. download new file to user
+                '''
+                # book = xlsxwriter.Workbook("/home/pilgrim/PycharmProjects/dasha/data.xlsx")
+                # sheet1 = book.add_worksheet("Sheet1")
+
+            else:
+                form = UploadFileForm()
+        return render(request, 'upload.html', {'form': form})
