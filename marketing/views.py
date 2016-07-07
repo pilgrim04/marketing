@@ -71,7 +71,7 @@ class RegistrationView(FormView):
         return HttpResponseRedirect('/cabinet')
 
 
-class CabinetView(TemplateView):
+class CabinetView(TemplateView, UploadFileForm):
     template_name = 'cabinet.html'
     # TODO: настроить декоратор
 
@@ -87,14 +87,13 @@ class CabinetView(TemplateView):
 
         return context
 
-    def upload_file(request):
-        if request.method == 'POST':
-            form = UploadFileForm(request.POST, request.FILES)
+    def post(self, request):
+        if self.request.method == 'POST':
+            form = UploadFileForm(request.FILES)
             if form.is_valid():
-                # my_file = request.FILES['file']
-                for filename, file in request.FILES.iteritems():
-                    name = request.FILES[filename].name
-                    print name
+                print 'valid'
+                my_file = self.request.FILES['file']
+                print 'my_file.name', my_file.name
                 '''
                 TODO:
                 1. upload file
@@ -108,5 +107,6 @@ class CabinetView(TemplateView):
                 # sheet1 = book.add_worksheet("Sheet1")
 
             else:
-                form = UploadFileForm()
-        return render(request, 'upload.html', {'form': form})
+                print 'invalid'
+                print 'print from view: ', form
+        return render(self.request, 'cabinet.html', {'form': form})

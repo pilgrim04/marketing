@@ -12,11 +12,15 @@
         <!--<div><input id="id_file_title" name="file_title" type="text"-->
                     <!--onFocus="checkFocus(this, 'file_title')" onBlur="checkBlur(this, 'file_title')" /></div>-->
 
-        <div><input id="id_upload_file" name="upload_file" type="file"
-                    onFocus="checkFocus(this, 'upload_file')" onBlur="checkBlur(this, 'upload_file')"/></div>
+        <input type="file">
 
         <div><input class="btn btn-primary btn-small" type="submit" value="upload it"/></div>
+
     </form>
+
+    {% if form.my_file %}
+        <p>{{ form.my_file.name }} successfully downloaded</p>
+    {% endif %}
 
 {% endblock content %}
 </body>
