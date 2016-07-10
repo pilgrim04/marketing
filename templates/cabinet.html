@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
+<!--{% extends "base.html" %}-->
 <html>
 <head>
     <title>Личный кабинет</title>
@@ -7,20 +7,16 @@
 <body>
 {% block content %}
 
-    <!--Привет, {{ user.username }}!-->
-    <form method="post">{% csrf_token %}
-        <!--<div><input id="id_file_title" name="file_title" type="text"-->
-                    <!--onFocus="checkFocus(this, 'file_title')" onBlur="checkBlur(this, 'file_title')" /></div>-->
+    Привет, {{ user.username }}!
+    <br>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
         <input type="file">
-
-        <div><input class="btn btn-primary btn-small" type="submit" value="upload it"/></div>
+        {{ form }}
+        <p><input type="submit" value="Upload"/></p>
 
     </form>
-
-    {% if form.my_file %}
-        <p>{{ form.my_file.name }} successfully downloaded</p>
-    {% endif %}
 
 {% endblock content %}
 </body>

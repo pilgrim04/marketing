@@ -89,11 +89,11 @@ class CabinetView(TemplateView, UploadFileForm):
 
     def post(self, request):
         if self.request.method == 'POST':
-            form = UploadFileForm(request.FILES)
+            form = UploadFileForm(request.POST, request.FILES)
             if form.is_valid():
-                print 'valid'
-                my_file = self.request.FILES['file']
-                print 'my_file.name', my_file.name
+                my_file = self.request.FILES['docfile']
+                print 'my file name: ', my_file.name
+                form.save()
                 '''
                 TODO:
                 1. upload file
@@ -105,8 +105,9 @@ class CabinetView(TemplateView, UploadFileForm):
                 '''
                 # book = xlsxwriter.Workbook("/home/pilgrim/PycharmProjects/dasha/data.xlsx")
                 # sheet1 = book.add_worksheet("Sheet1")
+                return HttpResponse('successful')
 
             else:
                 print 'invalid'
-                print 'print from view: ', form
+
         return render(self.request, 'cabinet.html', {'form': form})
